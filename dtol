@@ -1,0 +1,5 @@
+#!/bin/bash
+read LONGDATE
+#TIMESTAMP=$(date -d "$LONGDATE" +%s)
+#echo $TIMESTAMP.0000000 | ttol 
+date -d "$LONGDATE" +%s.%7N

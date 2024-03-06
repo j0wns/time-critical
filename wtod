@@ -1,0 +1,5 @@
+#!/bin/bash
+# Convert LDAP W32 FileTime to a Linux Ephoch Timestamp with seven digit precision.
+read W32_FILETIME
+echo $W32_FILETIME | wtol | ltod
+

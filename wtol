@@ -1,0 +1,9 @@
+#!/bin/bash
+read W32_FILETIME
+# Convert LDAP W32 FileTime to a Linux Ephoch Timestamp with seven digit precision.
+W32_FILETIME_OFFSET=116444736000000000
+DIFFERENCE=$(expr $W32_FILETIME - $W32_FILETIME_OFFSET )
+TS_NS=$(echo $DIFFERENCE | rev | cut -c 1-7 | rev)
+TS_SEC=$(echo $DIFFERENCE | rev | cut -c 1-7 --complement | rev)
+echo "$TS_SEC.$TS_NS"
+

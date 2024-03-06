@@ -1,0 +1,9 @@
+#!/bin/bash
+read TIMESTAMP
+# Convert a Linux Epoch Timestamp to an LDAP W32 Filetime
+# expects dotted format 1234567890.1234567 trailing .0 catches EPOCH Seconds
+TS_SECONDS=$(echo $TIMESTAMP.0 | cut -d'.' -f1)
+TS_NANOSEC=$(echo $TIMESTAMP.0 | cut -d'.' -f2)
+W32_FILETIME_OFFSET=116444736000000000
+# Pad order of magnitude, add nanoseconds and offset
+expr $TS_SECONDS \* 10000000 + $TS_NANOSEC + $W32_FILETIME_OFFSET

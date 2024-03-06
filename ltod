@@ -1,0 +1,8 @@
+#!/bin/bash
+read UNIX_EPOCH_TS
+#echo $TIMESTAMP
+# Unix Epoch Integer determines date.
+# Prune Nanoseconds
+UNIX_SECONDS=$(echo $UNIX_EPOCH_TS | cut -d'.' -f1)
+#echo $TS_SECONDS
+date -d @$UNIX_SECONDS
